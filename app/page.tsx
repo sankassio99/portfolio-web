@@ -11,8 +11,11 @@ import {
   Database,
   Github,
   Gauge,
+  Instagram,
   Layers3,
+  Linkedin,
   Mail,
+  Send,
   MoveUpRight,
   ShieldCheck,
   Sparkles,
@@ -24,6 +27,14 @@ import dimonaProjectImage from "../assets/camisa-dimona-freelance-project.png";
 import profileImage from "../assets/profile-photo.png";
 import expectationsImage from "../assets/what-you-can-expect.jpeg";
 import { ContactForm } from "./contact-form";
+import { ScrollReveal } from "./scroll-reveal";
+
+const socials = [
+  { icon: Github, label: "GitHub", href: "https://github.com/sankassio99" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/kassio-dev" },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/kassio.dev/" },
+  { icon: Send, label: "Telegram @kassiodev", href: "https://t.me/kassiodev" },
+];
 
 const expertise = [
   {
@@ -109,6 +120,7 @@ const experience = [
 export default function Home() {
   return (
     <main className="overflow-hidden bg-background text-primary">
+      <ScrollReveal />
       <header className="sticky top-0 z-30 border-b border-white/[0.07] bg-background/85 backdrop-blur-xl">
         <div className="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-4 px-5 sm:px-8 lg:px-12">
           <a aria-label="Portfolio home" className="group flex shrink-0 items-center gap-2.5" href="#home">
@@ -127,7 +139,7 @@ export default function Home() {
       <section className="relative isolate" id="home">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_79%_34%,rgba(99,102,241,0.14),transparent_36%),linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:auto,44px_44px,44px_44px]" />
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-12 sm:px-8 sm:pb-20 sm:pt-16 md:grid-cols-[1.1fr_.9fr] md:gap-8 md:py-24 lg:px-12 lg:py-28">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl" data-reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-surface/80 px-3 py-1.5 text-[11px] font-medium text-muted sm:text-xs">
               <span className="size-1.5 rounded-full bg-accent shadow-[0_0_10px_#6366f1]" />
               SENIOR SOFTWARE ENGINEER <span className="text-white/25">/</span> .NET · ANGULAR · AZURE
@@ -149,7 +161,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-md md:max-w-none">
+          <div className="relative mx-auto w-full max-w-md md:max-w-none" data-reveal style={{ transitionDelay: "150ms" }}>
             <div aria-hidden="true" className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-accent/20 via-transparent to-accent-secondary/15 blur-2xl" />
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-surface p-2 shadow-2xl shadow-black/30 sm:rounded-[2.5rem] sm:p-3">
               <div className="relative aspect-[4/4.2] overflow-hidden rounded-[1.5rem] bg-[#24211f] sm:rounded-[2rem]">
@@ -173,21 +185,21 @@ export default function Home() {
       </section>
 
       <section aria-label="Core technologies" className="border-y border-white/[0.07] bg-surface/55">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-7 gap-y-2 px-5 py-5 text-xs font-medium text-muted sm:gap-x-11 sm:py-6 sm:text-sm lg:px-12">
+        <div data-reveal className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-7 gap-y-2 px-5 py-5 text-xs font-medium text-muted sm:gap-x-11 sm:py-6 sm:text-sm lg:px-12">
           <span className="font-mono text-[10px] tracking-wide text-muted/60">IN THE TOOLKIT</span>
           <span>C# / .NET</span><span className="text-accent/70">✳</span><span>Azure</span><span className="text-accent/70">✳</span><span>Angular</span><span className="text-accent/70">✳</span><span>TypeScript</span><span className="text-accent/70">✳</span><span>SQL Server</span>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-12" id="expertise">
-        <div className="mb-10 max-w-2xl sm:mb-14">
+        <div className="mb-10 max-w-2xl sm:mb-14" data-reveal>
           <p className="font-mono text-[11px] tracking-widest text-accent">01 / WHAT I DO</p>
           <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">Good software works <span className="text-muted">across the stack.</span></h2>
           <p className="mt-4 max-w-xl text-sm leading-7 text-muted">From architecture to delivery, I work across the boundaries that make a system reliable in production and practical to maintain.</p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-          {expertise.map(({ icon: Icon, number, title, description, tags }) => (
-            <article className="group rounded-[1.5rem] border border-white/[0.07] bg-surface/70 p-5 transition duration-200 hover:-translate-y-1 hover:border-accent/30 hover:bg-surface sm:rounded-[1.75rem] sm:p-6" key={number}>
+          {expertise.map(({ icon: Icon, number, title, description, tags }, index) => (
+            <article data-reveal style={{ transitionDelay: `${(index % 3) * 100}ms` }} className="group rounded-[1.5rem] border border-white/[0.07] bg-surface/70 p-5 transition duration-200 hover:-translate-y-1 hover:border-accent/30 hover:bg-surface sm:rounded-[1.75rem] sm:p-6" key={number}>
               <div className="flex items-start justify-between">
                 <span className="grid size-11 place-items-center rounded-2xl bg-accent/10 text-accent transition group-hover:bg-accent/15"><Icon aria-hidden="true" className="size-5" strokeWidth={1.7} /></span>
                 <span className="font-mono text-[10px] text-muted/45">{number}</span>
@@ -203,7 +215,7 @@ export default function Home() {
       </section>
 
       <section className="border-y border-white/[0.07] bg-surface/35" id="work">
-        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
+        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-12" data-reveal>
           <div className="mb-10 flex flex-col justify-between gap-4 sm:mb-14 sm:flex-row sm:items-end">
             <div className="max-w-2xl">
               <p className="font-mono text-[11px] tracking-widest text-accent">02 / SELECTED WORK</p>
@@ -230,7 +242,7 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-12" id="about">
-        <div className="grid items-center gap-10 md:grid-cols-[.85fr_1.15fr] md:gap-16">
+        <div className="grid items-center gap-10 md:grid-cols-[.85fr_1.15fr] md:gap-16" data-reveal>
           <div className="relative mx-auto w-full max-w-sm md:mx-0">
             <div aria-hidden="true" className="absolute -inset-3 -z-10 rounded-[2rem] bg-accent-secondary/10 blur-xl" />
             <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-surface p-2 sm:rounded-[2rem]">
@@ -252,7 +264,7 @@ export default function Home() {
       </section>
 
       <section className="border-y border-white/[0.07] bg-surface/35">
-        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
+        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-12" data-reveal>
           <div className="mb-10 max-w-2xl sm:mb-14">
             <p className="font-mono text-[11px] tracking-widest text-accent">04 / EXPERIENCE</p>
             <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">A little about <span className="text-muted">the journey.</span></h2>
@@ -280,12 +292,16 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-12" id="contact">
-        <div className="grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:gap-20">
+        <div className="grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:gap-20" data-reveal>
           <div>
             <p className="font-mono text-[11px] tracking-widest text-accent">05 / GET IN TOUCH</p>
             <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">Have a tricky system problem?</h2>
             <p className="mt-4 max-w-md text-sm leading-7 text-muted">Tell me what you&apos;re building, improving, or trying to untangle. I&apos;ll get back to you to talk through what makes sense.</p>
-            <a className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 px-4 text-sm text-muted transition hover:border-accent/40 hover:text-primary" href="https://github.com/sankassio99" rel="noreferrer" target="_blank"><Github aria-hidden="true" className="size-4" /> GitHub <ArrowRight aria-hidden="true" className="size-3.5" /></a>
+            <div className="mt-7 flex flex-wrap gap-3">
+              {socials.map(({ icon: Icon, label, href }) => (
+                <a className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 px-4 text-sm text-muted transition hover:border-accent/40 hover:text-primary" href={href} key={label} rel="noreferrer" target="_blank"><Icon aria-hidden="true" className="size-4" /> {label} <ArrowRight aria-hidden="true" className="size-3.5" /></a>
+              ))}
+            </div>
             <p className="mt-8 hidden items-center gap-2 font-mono text-[10px] tracking-widest text-muted/60 lg:flex"><Database aria-hidden="true" className="size-3.5" /> .NET · CLOUD · FULL-STACK</p>
           </div>
           <div className="rounded-[1.75rem] border border-white/[0.08] bg-surface p-5 sm:rounded-[2rem] sm:p-8">
